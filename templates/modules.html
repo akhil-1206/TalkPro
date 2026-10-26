@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Test Yourself</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #08050c, #3d027e);
+            color: white;
+            min-height: 100vh;
+        }
+        .test-box {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a013e;
+            border-radius: 24px;
+            padding: 28px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .test-box:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #2a0463, #6b21a8);
+            color: white;
+            box-shadow: 0 15px 40px rgba(126, 34, 206, 0.5);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#1a013e] px-6 py-4 flex items-center justify-between border-b border-purple-900/40 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-purple-600 text-white font-bold p-2.5 rounded-xl shadow-lg">
+                <i class="fa-solid fa-vial text-xl"></i>
+            </div>
+            <a href="/dashboard" class="text-2xl font-bold tracking-wide text-white">TalkPro</a>
+        </div>
+        <ul class="hidden md:flex items-center gap-8 font-medium text-sm">
+            <li><a href="/dashboard" class="hover:text-purple-300 transition">Home</a></li>
+            <li><a href="/lessons" class="hover:text-purple-300 transition">Lessons</a></li>
+            <li><a href="/chat" class="hover:text-purple-300 transition">AI Assistant</a></li>
+            <li><a href="/modules" class="text-purple-300 font-semibold border-b-2 border-purple-400 pb-1">Tests</a></li>
+            <li><a href="/profile" class="hover:text-purple-300 transition">Progress</a></li>
+        </ul>
+        <a href="/dashboard" class="text-xs bg-purple-900/80 hover:bg-purple-800 text-purple-200 px-3.5 py-2 rounded-xl border border-purple-500/30 transition">
+            <i class="fa-solid fa-house mr-1"></i> Dashboard
+        </a>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl space-y-10">
+        
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-purple-500/20 text-purple-300 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-purple-500/30">
+                🎯 SELF-ASSESSMENT CENTER
+            </div>
+            <h1 class="text-4xl font-extrabold text-white tracking-tight">Interactive Skill Tests</h1>
+            <p class="text-sm text-purple-200 max-w-lg mx-auto">Assess your proficiency across Grammar, Vocabulary, and Reading comprehension. Your scores will update your progress profile in real time!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Grammar Test -->
+            <a href="/grammar" class="test-box group flex flex-col items-center text-center relative overflow-hidden">
+                <div class="w-16 h-16 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-purple-800/40 group-hover:text-purple-200 shadow-inner">
+                    <i class="fa-solid fa-check-circle"></i>
+                </div>
+                
+                {% if module_scores and module_scores.get('grammar') %}
+                <span class="mb-3 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 group-hover:bg-emerald-500/30 group-hover:text-emerald-200 border border-emerald-300">
+                    Latest: {{ module_scores.get('grammar') }}%
+                </span>
+                {% else %}
+                <span class="mb-3 text-[11px] font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-700 group-hover:bg-purple-800/60 group-hover:text-purple-200 border border-purple-200">
+                    5 Questions • 5 mins
+                </span>
+                {% endif %}
+
+                <h2 class="text-2xl font-bold mb-2">Grammar Test</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6">Test knowledge of verb tenses, prepositions, articles, and sentence structure.</p>
+                
+                <span class="mt-auto inline-flex items-center gap-2 text-xs font-bold text-purple-700 group-hover:text-white uppercase tracking-wider">
+                    Start Test <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- Vocabulary Test -->
+            <a href="/vocabulary" class="test-box group flex flex-col items-center text-center relative overflow-hidden">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-indigo-800/40 group-hover:text-indigo-200 shadow-inner">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+
+                {% if module_scores and module_scores.get('vocabulary') %}
+                <span class="mb-3 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 group-hover:bg-emerald-500/30 group-hover:text-emerald-200 border border-emerald-300">
+                    Latest: {{ module_scores.get('vocabulary') }}%
+                </span>
+                {% else %}
+                <span class="mb-3 text-[11px] font-semibold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 group-hover:bg-indigo-800/60 group-hover:text-indigo-200 border border-indigo-200">
+                    5 Questions • 5 mins
+                </span>
+                {% endif %}
+
+                <h2 class="text-2xl font-bold mb-2">Vocabulary Test</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6">Expand word power with antonyms, synonyms, and formal vs informal usage.</p>
+                
+                <span class="mt-auto inline-flex items-center gap-2 text-xs font-bold text-indigo-700 group-hover:text-white uppercase tracking-wider">
+                    Start Test <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- Reading Test -->
+            <a href="/reading" class="test-box group flex flex-col items-center text-center relative overflow-hidden">
+                <div class="w-16 h-16 bg-pink-100 text-pink-700 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-pink-800/40 group-hover:text-pink-200 shadow-inner">
+                    <i class="fa-solid fa-file-alt"></i>
+                </div>
+
+                {% if module_scores and module_scores.get('reading') %}
+                <span class="mb-3 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 group-hover:bg-emerald-500/30 group-hover:text-emerald-200 border border-emerald-300">
+                    Latest: {{ module_scores.get('reading') }}%
+                </span>
+                {% else %}
+                <span class="mb-3 text-[11px] font-semibold px-3 py-1 rounded-full bg-pink-50 text-pink-700 group-hover:bg-pink-800/60 group-hover:text-pink-200 border border-pink-200">
+                    Passage + 3 Questions
+                </span>
+                {% endif %}
+
+                <h2 class="text-2xl font-bold mb-2">Reading Test</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6">Improve reading speed and comprehension through analytical passage questions.</p>
+                
+                <span class="mt-auto inline-flex items-center gap-2 text-xs font-bold text-pink-700 group-hover:text-white uppercase tracking-wider">
+                    Start Test <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+        </div>
+
+    </main>
+</body>
+</html>

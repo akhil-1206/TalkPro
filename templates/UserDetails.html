@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Complete Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #08050c 0%, #3d027e 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(30, 16, 60, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div class="w-full max-w-lg glass-card text-white rounded-3xl p-8 relative overflow-hidden">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-purple-600/30 rounded-full text-purple-300 mb-3 border border-purple-500/40">
+                <i class="fa-solid fa-id-card text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold tracking-tight">Complete Your Profile</h1>
+            <p class="text-sm text-purple-200 mt-1">Personalize your AI English learning experience</p>
+        </div>
+
+        <form action="/user_details" method="POST" class="space-y-6">
+            <input type="hidden" name="email" value="{{ session.get('user_email', '') }}">
+
+            <!-- Age Input -->
+            <div>
+                <label for="age" class="block text-xs font-semibold uppercase tracking-wider text-purple-200 mb-2">Your Age</label>
+                <input type="number" id="age" name="age" min="10" max="100" required placeholder="e.g. 21"
+                    class="w-full px-4 py-3 bg-purple-950/60 border border-purple-500/30 rounded-xl text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+            </div>
+
+            <!-- Profession Input -->
+            <div>
+                <label for="profession" class="block text-xs font-semibold uppercase tracking-wider text-purple-200 mb-2">Profession / Role</label>
+                <input type="text" id="profession" name="profession" required placeholder="e.g. Student, Engineer, Teacher"
+                    class="w-full px-4 py-3 bg-purple-950/60 border border-purple-500/30 rounded-xl text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+            </div>
+
+            <!-- English Level Select -->
+            <div>
+                <label for="english_level" class="block text-xs font-semibold uppercase tracking-wider text-purple-200 mb-2">English Proficiency Level</label>
+                <select id="english_level" name="english_level" required
+                    class="w-full px-4 py-3 bg-purple-950/80 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                    <option value="Beginner">Beginner (Basic words & simple sentences)</option>
+                    <option value="Intermediate" selected>Intermediate (Conversational & everyday English)</option>
+                    <option value="Advanced">Advanced (Fluent & professional communication)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full py-4 px-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg hover:shadow-purple-500/25 transition transform active:scale-95 flex items-center justify-center gap-2">
+                <span>SAVE & CONTINUE</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

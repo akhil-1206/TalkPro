@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Home Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #08050c, #3d027e);
+            color: white;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #1a013e;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 380px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 300%;
+            height: 100%;
+        }
+        .slider-slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            flex: 0 0 33.333333%;
+        }
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.65);
+        }
+        .slider-heading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            width: 85%;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            gap: 8px;
+        }
+        .slider-dots button {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dots button.active {
+            background-color: #c084fc;
+            width: 28px;
+            border-radius: 10px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a013e;
+            padding: 28px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .card:hover {
+            background: linear-gradient(145deg, #2a0463, #6b21a8);
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(126, 34, 206, 0.4);
+        }
+        .card i {
+            transition: transform 0.3s ease;
+        }
+        .card:hover i {
+            transform: scale(1.15);
+            color: #e9d5ff;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="bg-purple-600 text-white font-bold p-2.5 rounded-xl shadow-lg">
+                <i class="fa-solid fa-comments text-xl"></i>
+            </div>
+            <a href="/dashboard" class="text-2xl font-bold tracking-wide text-white">TalkPro</a>
+        </div>
+
+        <ul class="hidden md:flex items-center gap-8 font-medium text-sm">
+            <li><a href="/dashboard" class="text-purple-300 font-semibold border-b-2 border-purple-400 pb-1">Home</a></li>
+            <li><a href="/lessons" class="hover:text-purple-300 transition">Lessons</a></li>
+            <li><a href="/chat" class="hover:text-purple-300 transition">AI Assistant</a></li>
+            <li><a href="/modules" class="hover:text-purple-300 transition">Tests</a></li>
+            <li><a href="/profile" class="hover:text-purple-300 transition">Progress</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+            <span class="text-xs bg-purple-900/80 px-3 py-1.5 rounded-full border border-purple-500/30 text-purple-200">
+                <i class="fa-solid fa-user text-purple-400 mr-1"></i> {{ session.get('user_name', 'Learner') }}
+            </span>
+            <a href="/logout" class="text-xs bg-red-600/80 hover:bg-red-600 text-white font-semibold px-3 py-1.5 rounded-lg transition">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
+
+        <!-- Banner Slider Section -->
+        <div class="slider" id="slider">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slider-slide">
+                    <img src="/Assest/slider (1).jpeg" alt="Personalized Learning">
+                    <div class="slider-heading">Personalized AI Learning Journey</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="/Assest/silder.jpg" alt="Learn Anytime">
+                    <div class="slider-heading">Learn English Anytime, Anywhere</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="/Assest/silder 3.jpg" alt="Comprehensive Lessons">
+                    <div class="slider-heading">Comprehensive Lesson Library & AI Practice</div>
+                </div>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <button onclick="changeSlide(0)" class="active"></button>
+                <button onclick="changeSlide(1)"></button>
+                <button onclick="changeSlide(2)"></button>
+            </div>
+        </div>
+
+        <!-- Dashboard Feature Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <!-- Card 1: Lessons -->
+            <a href="/lessons" class="card group">
+                <div class="w-14 h-14 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-purple-800/40 group-hover:text-purple-200">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Lesson Library</h3>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200">Explore audio, video, and vocabulary modules tailored to your pace.</p>
+            </a>
+
+            <!-- Card 2: AI Chat Assistant -->
+            <a href="/chat" class="card group">
+                <div class="w-14 h-14 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-indigo-800/40 group-hover:text-indigo-200">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">AI Chat Assistant</h3>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200">Chat with Gemini AI for grammar corrections & live conversation.</p>
+            </a>
+
+            <!-- Card 3: Complete the Story -->
+            <a href="/story" class="card group">
+                <div class="w-14 h-14 bg-pink-100 text-pink-700 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-pink-800/40 group-hover:text-pink-200">
+                    <i class="fas fa-pen-nib"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Complete Story</h3>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200">Write story endings and receive instant AI scores & feedback.</p>
+            </a>
+
+            <!-- Card 4: Tests & Quizzes -->
+            <a href="/modules" class="card group">
+                <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-amber-800/40 group-hover:text-amber-200">
+                    <i class="fas fa-vial"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Tests & Quizzes</h3>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200">Test Grammar, Vocabulary, and Reading comprehension skills.</p>
+            </a>
+
+            <!-- Card 5: Progress Tracker -->
+            <a href="/profile" class="card group md:col-span-3 lg:col-span-4">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-emerald-800/40 group-hover:text-emerald-200">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Progress Analytics</h3>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200">View overall completion metrics and detailed module performance bars.</p>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slider-slide');
+        const sliderTrack = document.getElementById('sliderTrack');
+        const dots = document.querySelectorAll('#sliderDots button');
+
+        function changeSlide(index) {
+            currentIndex = index;
+            const offset = -currentIndex * (100 / 3);
+            sliderTrack.style.transform = `translateX(${offset}%)`;
+            updateDots();
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            changeSlide(currentIndex);
+        }
+
+        setInterval(autoSlide, 3500);
+    </script>
+</body>
+</html>

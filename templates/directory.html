@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Vocabulary Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #08050c, #3d027e);
+            color: white;
+            min-height: 100vh;
+        }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#1a013e] px-6 py-4 flex items-center justify-between border-b border-purple-900/40 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-purple-600 text-white font-bold p-2.5 rounded-xl shadow-lg">
+                <i class="fa-solid fa-spell-check text-xl"></i>
+            </div>
+            <a href="/dashboard" class="text-2xl font-bold tracking-wide text-white">TalkPro</a>
+        </div>
+        <ul class="hidden md:flex items-center gap-8 font-medium text-sm">
+            <li><a href="/dashboard" class="hover:text-purple-300 transition">Home</a></li>
+            <li><a href="/lessons" class="text-purple-300 font-semibold border-b-2 border-purple-400 pb-1">Lessons</a></li>
+            <li><a href="/chat" class="hover:text-purple-300 transition">AI Assistant</a></li>
+            <li><a href="/modules" class="hover:text-purple-300 transition">Tests</a></li>
+            <li><a href="/profile" class="hover:text-purple-300 transition">Progress</a></li>
+        </ul>
+        <a href="/lessons" class="text-xs bg-purple-900/80 hover:bg-purple-800 text-purple-200 px-3.5 py-2 rounded-xl border border-purple-500/30 transition">
+            <i class="fa-solid fa-arrow-left mr-1"></i> Lessons
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl space-y-6">
+        
+        <!-- Header -->
+        <div class="glass-box p-6 text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-pink-500/20 text-pink-300 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-pink-500/30">
+                📚 MULTI-LINGUAL LEXICON & PRONUNCIATION
+            </div>
+            <h1 class="text-3xl font-extrabold text-white">Interactive Vocabulary Directory</h1>
+            <p class="text-sm text-purple-200 max-w-xl mx-auto">Master formal vs casual English words with audio pronunciation, usage examples, Hindi, and Marathi translations.</p>
+            
+            <!-- Search Bar -->
+            <div class="relative max-w-md mx-auto pt-2">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-purple-300">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="vocabSearch" placeholder="Search by English, Hindi, or Marathi word..." 
+                    class="w-full pl-11 pr-4 py-3 bg-purple-950/70 border border-purple-500/30 text-white placeholder-purple-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-inner">
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+                <button onclick="filterCategory('all')" class="cat-btn active text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-600 text-white shadow">All Words</button>
+                <button onclick="filterCategory('business')" class="cat-btn text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-950/60 hover:bg-purple-800 text-purple-200 border border-purple-500/30">Business</button>
+                <button onclick="filterCategory('daily')" class="cat-btn text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-950/60 hover:bg-purple-800 text-purple-200 border border-purple-500/30">Daily Spoken</button>
+                <button onclick="filterCategory('academic')" class="cat-btn text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-950/60 hover:bg-purple-800 text-purple-200 border border-purple-500/30">Academic</button>
+                <button onclick="filterCategory('emotion')" class="cat-btn text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-950/60 hover:bg-purple-800 text-purple-200 border border-purple-500/30">Emotions</button>
+            </div>
+        </div>
+
+        <!-- Vocabulary Cards Container -->
+        <div id="vocabList" class="space-y-4">
+
+            <!-- Word 1 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="emotion">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Regret (Casual) / Remorse (Formal)</h2>
+                        <button onclick="speakWord('Remorse')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-purple-600/30 text-purple-200 px-3 py-1 rounded-full border border-purple-500/30">Emotion</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Regret" is used in everyday conversation, while "Remorse" expresses profound moral guilt.</p>
+                    <p class="text-xs text-purple-200 italic">"He felt deep remorse for his thoughtless actions."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Regret - पछतावा | Remorse - गहरा प्रायश्चित / पछतावा</p>
+                        <p>🚩 <strong>मराठी:</strong> Regret - पश्चात्ताप | Remorse - तीव्र खंत</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 2 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="business">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Tell (Casual) / Inform (Formal)</h2>
+                        <button onclick="speakWord('Inform')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-indigo-600/30 text-indigo-200 px-3 py-1 rounded-full border border-indigo-500/30">Business</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Tell" suits casual conversations, while "Inform" or "Notify" is preferred in corporate emails.</p>
+                    <p class="text-xs text-purple-200 italic">"Please inform the project manager once the review is complete."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Tell - बताना | Inform - सूचित करना</p>
+                        <p>🚩 <strong>मराठी:</strong> Tell - सांगणे | Inform - माहिती देणे / सूचित करणे</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 3 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="emotion">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Want (Casual) / Desire (Formal)</h2>
+                        <button onclick="speakWord('Desire')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-pink-600/30 text-pink-200 px-3 py-1 rounded-full border border-pink-500/30">Emotion</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Want" indicates a direct need, whereas "Desire" or "Aspire" conveys deeper ambition.</p>
+                    <p class="text-xs text-purple-200 italic">"She had a strong desire to excel in international debates."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Want - चाहना | Desire - तीव्र इच्छा / आकांक्षा</p>
+                        <p>🚩 <strong>मराठी:</strong> Want - इच्छा असणे | Desire - तीव्र आकांक्षा</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 4 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="business">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Look Into (Casual) / Investigate (Formal)</h2>
+                        <button onclick="speakWord('Investigate')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-emerald-600/30 text-emerald-200 px-3 py-1 rounded-full border border-emerald-500/30">Business</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Look into" is spoken casually, while "Investigate" or "Analyze" is standard in technical reports.</p>
+                    <p class="text-xs text-purple-200 italic">"The audit committee will investigate the discrepancy."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Look into - देखना | Investigate - गहन जांच करना</p>
+                        <p>🚩 <strong>मराठी:</strong> Look into - पाहणे | Investigate - सखोल तपासणी करणे</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 5 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="academic">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Clear (Casual) / Articulate (Formal)</h2>
+                        <button onclick="speakWord('Articulate')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-purple-600/30 text-purple-200 px-3 py-1 rounded-full border border-purple-500/30">Academic</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Clear" describes understandable words, while "Articulate" denotes persuasive, refined speech.</p>
+                    <p class="text-xs text-purple-200 italic">"He is an articulate speaker who captivated the entire auditorium."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Clear - साफ | Articulate - स्पष्ट एवं प्रभावशाली वक्ता</p>
+                        <p>🚩 <strong>मराठी:</strong> Clear - स्पष्ट | Articulate - प्रभावी व स्पष्ट बोलणारा</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 6 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="daily">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Help (Casual) / Facilitate (Formal)</h2>
+                        <button onclick="speakWord('Facilitate')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-indigo-600/30 text-indigo-200 px-3 py-1 rounded-full border border-indigo-500/30">Daily Spoken</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Help" is ubiquitous, while "Facilitate" is used when making a process or transition easier.</p>
+                    <p class="text-xs text-purple-200 italic">"Modern software facilitates remote team collaboration."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Help - मदद | Facilitate - सुगम / सरल बनाना</p>
+                        <p>🚩 <strong>मराठी:</strong> Help - मदत | Facilitate - सुलभ करणे</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 7 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="academic">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Careful (Casual) / Meticulous (Formal)</h2>
+                        <button onclick="speakWord('Meticulous')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-pink-600/30 text-pink-200 px-3 py-1 rounded-full border border-pink-500/30">Academic</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Meticulous" denotes extreme, thorough attention to precision and detail.</p>
+                    <p class="text-xs text-purple-200 italic">"The researcher was meticulous in documenting every laboratory variable."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Careful - सावधान | Meticulous - अत्यंत सूक्ष्म एवं सटीक</p>
+                        <p>🚩 <strong>मराठी:</strong> Careful - काळजीपूर्वक | Meticulous - अतिशय बारकाईने काम करणारा</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word 8 -->
+            <div class="vocab-card glass-box p-6 hover:border-purple-400/50 transition" data-category="business">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-purple-300">Get (Casual) / Acquire (Formal)</h2>
+                        <button onclick="speakWord('Acquire')" class="w-8 h-8 rounded-full bg-purple-900/60 hover:bg-purple-700 text-purple-300 flex items-center justify-center text-xs transition" title="Listen to pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <span class="text-xs bg-emerald-600/30 text-emerald-200 px-3 py-1 rounded-full border border-emerald-500/30">Business</span>
+                </div>
+                <div class="space-y-2 text-sm text-purple-100">
+                    <p><strong class="text-purple-300">Context:</strong> "Get" is casual; "Acquire" or "Obtain" is used for business assets, skills, or knowledge.</p>
+                    <p class="text-xs text-purple-200 italic">"TalkPro helps students acquire natural English speaking abilities."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-purple-950/40 p-3 rounded-xl text-xs">
+                        <p>🇮🇳 <strong>हिंदी:</strong> Get - पाना | Acquire - अर्जित / प्राप्त करना</p>
+                        <p>🚩 <strong>मराठी:</strong> Get - मिळवणे | Acquire - आत्मसात करणे / संपादन करणे</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.rate = 0.9;
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Live Search Filter
+        document.getElementById('vocabSearch').addEventListener('keyup', function() {
+            const query = this.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Category Filter
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white', 'shadow');
+                btn.classList.add('bg-purple-950/60', 'text-purple-200');
+            });
+            event.target.classList.remove('bg-purple-950/60', 'text-purple-200');
+            event.target.classList.add('bg-purple-600', 'text-white', 'shadow');
+
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

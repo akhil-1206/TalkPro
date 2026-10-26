@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Lesson Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #08050c, #3d027e);
+            color: white;
+            min-height: 100vh;
+        }
+        .lesson-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a013e;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lesson-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #2a0463, #6b21a8);
+            color: white;
+            box-shadow: 0 15px 40px rgba(126, 34, 206, 0.5);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#1a013e] px-6 py-4 flex items-center justify-between border-b border-purple-900/40 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-purple-600 text-white font-bold p-2.5 rounded-xl shadow-lg">
+                <i class="fa-solid fa-graduation-cap text-xl"></i>
+            </div>
+            <a href="/dashboard" class="text-2xl font-bold tracking-wide text-white">TalkPro</a>
+        </div>
+        <ul class="hidden md:flex items-center gap-8 font-medium text-sm">
+            <li><a href="/dashboard" class="hover:text-purple-300 transition">Home</a></li>
+            <li><a href="/lessons" class="text-purple-300 font-semibold border-b-2 border-purple-400 pb-1">Lessons</a></li>
+            <li><a href="/chat" class="hover:text-purple-300 transition">AI Assistant</a></li>
+            <li><a href="/modules" class="hover:text-purple-300 transition">Tests</a></li>
+            <li><a href="/profile" class="hover:text-purple-300 transition">Progress</a></li>
+        </ul>
+        <a href="/dashboard" class="text-xs bg-purple-900/80 hover:bg-purple-800 text-purple-200 px-3.5 py-2 rounded-xl border border-purple-500/30 transition">
+            <i class="fa-solid fa-house mr-1"></i> Dashboard
+        </a>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="flex-grow container mx-auto px-4 py-10 max-w-5xl space-y-10">
+
+        <!-- Top Header Banner -->
+        <div class="bg-gradient-to-r from-purple-900/80 to-indigo-900/80 p-8 rounded-3xl border border-purple-500/30 shadow-2xl text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-purple-500/20 text-purple-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-purple-500/30">
+                🚀 EMBARK ON YOUR ENGLISH MASTERY JOURNEY
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white">Structured Learning Library</h1>
+            <p class="text-sm text-purple-200 max-w-2xl mx-auto">Choose an interactive lesson module below to practice story writing, listen to audio podcasts with multi-lingual notes, or explore vocabulary terms.</p>
+        </div>
+
+        <!-- Lesson Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Lesson 1: Complete Story -->
+            <a href="/story" class="lesson-card p-8 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-20 h-20 bg-purple-100 text-purple-700 rounded-3xl flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:bg-purple-800/40 group-hover:text-purple-200">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3">Complete the Story</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6 flex-grow">Read an AI-generated story outline, write your custom ending, and receive instant grammar & creativity evaluation.</p>
+                <span class="inline-flex items-center gap-2 text-xs font-bold text-purple-700 group-hover:text-white uppercase tracking-wider">
+                    Start Story <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- Lesson 2: Video & Podcasts -->
+            <a href="/video" class="lesson-card p-8 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-20 h-20 bg-indigo-100 text-indigo-700 rounded-3xl flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:bg-indigo-800/40 group-hover:text-indigo-200">
+                    <i class="fa-solid fa-volume-high"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3">Video & Podcasts</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6 flex-grow">Listen to inspirational speeches with multi-lingual explanations (English, Hindi, Marathi) and grammar breakdowns.</p>
+                <span class="inline-flex items-center gap-2 text-xs font-bold text-indigo-700 group-hover:text-white uppercase tracking-wider">
+                    Watch Videos <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+            <!-- Lesson 3: Vocabulary Directory -->
+            <a href="/directory" class="lesson-card p-8 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-20 h-20 bg-pink-100 text-pink-700 rounded-3xl flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:bg-pink-800/40 group-hover:text-pink-200">
+                    <i class="fa-solid fa-spell-check"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3">Vocabulary Directory</h2>
+                <p class="text-sm text-gray-600 group-hover:text-purple-200 mb-6 flex-grow">Access curated words with formal/informal context, usage rules, translations, and synonyms.</p>
+                <span class="inline-flex items-center gap-2 text-xs font-bold text-pink-700 group-hover:text-white uppercase tracking-wider">
+                    Explore Directory <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </a>
+
+        </div>
+
+    </main>
+</body>
+</html>

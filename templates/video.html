@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkpro | Video Podcasts & Speeches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #08050c, #3d027e);
+            color: white;
+            min-height: 100vh;
+        }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+        }
+        .video-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a013e;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#1a013e] px-6 py-4 flex items-center justify-between border-b border-purple-900/40 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-purple-600 text-white font-bold p-2.5 rounded-xl shadow-lg">
+                <i class="fa-solid fa-circle-play text-xl"></i>
+            </div>
+            <a href="/dashboard" class="text-2xl font-bold tracking-wide text-white">TalkPro</a>
+        </div>
+        <ul class="hidden md:flex items-center gap-8 font-medium text-sm">
+            <li><a href="/dashboard" class="hover:text-purple-300 transition">Home</a></li>
+            <li><a href="/lessons" class="text-purple-300 font-semibold border-b-2 border-purple-400 pb-1">Lessons</a></li>
+            <li><a href="/chat" class="hover:text-purple-300 transition">AI Assistant</a></li>
+            <li><a href="/modules" class="hover:text-purple-300 transition">Tests</a></li>
+            <li><a href="/profile" class="hover:text-purple-300 transition">Progress</a></li>
+        </ul>
+        <a href="/lessons" class="text-xs bg-purple-900/80 hover:bg-purple-800 text-purple-200 px-3.5 py-2 rounded-xl border border-purple-500/30 transition">
+            <i class="fa-solid fa-arrow-left mr-1"></i> Lessons
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl space-y-8">
+        
+        <div class="glass-box p-6 text-center space-y-2">
+            <div class="inline-flex items-center gap-2 bg-purple-500/20 text-purple-300 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-purple-500/30">
+                🎙️ MULTI-LINGUAL AUDIO & VIDEO LESSONS
+            </div>
+            <h1 class="text-3xl font-extrabold text-white">Explore Video & Audio Podcasts</h1>
+            <p class="text-sm text-purple-200">Watch iconic speeches and podcasts accompanied by interactive multi-lingual transcripts and grammar analyses.</p>
+        </div>
+
+        <!-- Featured Video Player Card -->
+        <div class="glass-box p-6 space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold text-purple-300 flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-amber-400"></i> Featured Lesson: Wings Of Fire (Dr. A.P.J. Abdul Kalam)
+                </h2>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-900/80 text-purple-300 border border-purple-500/30">
+                    Autobiography & Inspiration
+                </span>
+            </div>
+
+            <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-black border border-purple-500/30">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/5O6q8x9aJ5M" title="Wings of Fire Audiobook" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- Multi-lingual Interactive Explanation Section -->
+            <div class="space-y-3 pt-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-300 font-semibold mr-2">Language Notes:</span>
+                    <button onclick="setLang('en')" id="lang-en" class="text-xs font-bold bg-purple-600 px-4 py-1.5 rounded-full text-white shadow transition">English</button>
+                    <button onclick="setLang('hi')" id="lang-hi" class="text-xs font-bold bg-purple-950/60 hover:bg-purple-900 text-purple-300 border border-purple-500/30 px-4 py-1.5 rounded-full transition">हिंदी</button>
+                    <button onclick="setLang('mr')" id="lang-mr" class="text-xs font-bold bg-purple-950/60 hover:bg-purple-900 text-purple-300 border border-purple-500/30 px-4 py-1.5 rounded-full transition">मराठी</button>
+                </div>
+                
+                <div class="bg-purple-950/60 p-4 rounded-xl border border-purple-500/20 text-sm space-y-2 leading-relaxed">
+                    <div id="content-en" class="space-y-2">
+                        <p class="text-purple-200"><strong>Synopsis:</strong> "Wings of Fire" is the autobiography of Dr. A.P.J. Abdul Kalam. It narrates his inspiring journey from a humble coastal background to becoming India's Missile Man and 11th President.</p>
+                        <p class="text-xs text-purple-300"><strong>Grammar Highlight:</strong> Past Simple (narrating life events), Present Perfect (highlighting scientific achievements), Modal Verbs (expressing determination and vision for India).</p>
+                    </div>
+                    <div id="content-hi" class="hidden space-y-2">
+                        <p class="text-purple-200"><strong>सारांश:</strong> "विंग्स ऑफ फायर" डॉ. ए.पी.जे. अब्दुल कलाम की प्रेरणादायक आत्मकथा है। यह एक साधारण परिवार से उठकर भारत के 11वें राष्ट्रपति और 'मिसाइल मैन' बनने के उनके सफर को दर्शाती है।</p>
+                        <p class="text-xs text-purple-300"><strong>व्याकरण बिंदु:</strong> भूतकाल (जीवन की घटनाओं के लिए), वर्तमान पूर्ण काल (उपलब्धियों के लिए), और संकल्प व्यक्त करने के लिए मॉडल क्रियाएं।</p>
+                    </div>
+                    <div id="content-mr" class="hidden space-y-2">
+                        <p class="text-purple-200"><strong>सारांश:</strong> "विंग्स ऑफ फायर" हे डॉ. ए.पी.जे. अब्दुल कलाम यांचे अत्यंत प्रेरणादायी आत्मचरित्र आहे. एका सामान्य कुटुंबातून सुरू झालेला त्यांचा प्रवास भारताचे राष्ट्रपती आणि महान शास्त्रज्ञ बनण्यापर्यंतचा खडतर मार्ग रेखाटतो.</p>
+                        <p class="text-xs text-purple-300"><strong>व्याकरण महत्त्वाचे मुद्दे:</strong> भूतकाळ (प्रवासाचे वर्णन), वर्तमान परिपूर्ण काळ (सिद्धींचे वर्णन), आणि आत्मविश्वासाने इंग्रजी बोलण्याचे नियम.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Video Lessons Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Video 1 -->
+            <a href="/video1" class="video-card p-5 group flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-40 bg-purple-900 rounded-xl mb-4 overflow-hidden relative">
+                        <img src="/Assest/slider (1).jpeg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Steve Jobs">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white text-3xl opacity-80 group-hover:scale-125 transition"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded">Rhetoric & Speeches</span>
+                    <h3 class="font-bold text-lg mt-1 mb-1">Steve Jobs' Stanford Speech</h3>
+                    <p class="text-xs text-gray-600">Master rhetoric, public speaking pauses, and narrative storytelling in English.</p>
+                </div>
+                <span class="mt-4 text-xs font-bold text-purple-700 uppercase flex items-center gap-1">Watch Lesson <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+            </a>
+
+            <!-- Video 2 -->
+            <a href="/video2" class="video-card p-5 group flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-40 bg-purple-900 rounded-xl mb-4 overflow-hidden relative">
+                        <img src="/Assest/silder.jpg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="APJ Abdul Kalam">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white text-3xl opacity-80 group-hover:scale-125 transition"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded">Pronunciation</span>
+                    <h3 class="font-bold text-lg mt-1 mb-1">Wings of Fire Audiobook</h3>
+                    <p class="text-xs text-gray-600">Listen to pristine articulation with multi-lingual notes and vocabulary flashcards.</p>
+                </div>
+                <span class="mt-4 text-xs font-bold text-purple-700 uppercase flex items-center gap-1">Watch Lesson <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+            </a>
+
+            <!-- Video 3 -->
+            <a href="/video3" class="video-card p-5 group flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-40 bg-purple-900 rounded-xl mb-4 overflow-hidden relative">
+                        <img src="/Assest/silder 3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Sherlock Holmes">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white text-3xl opacity-80 group-hover:scale-125 transition"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-pink-700 bg-pink-100 px-2 py-0.5 rounded">British Accents & Idioms</span>
+                    <h3 class="font-bold text-lg mt-1 mb-1">Sherlock Holmes Story</h3>
+                    <p class="text-xs text-gray-600">Enhance listening comprehension, identify idioms, and follow conversational speed.</p>
+                </div>
+                <span class="mt-4 text-xs font-bold text-purple-700 uppercase flex items-center gap-1">Watch Lesson <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+            </a>
+
+        </div>
+
+    </main>
+
+    <script>
+        function setLang(lang) {
+            ['en', 'hi', 'mr'].forEach(l => {
+                document.getElementById(`content-${l}`).classList.add('hidden');
+                document.getElementById(`lang-${l}`).classList.remove('bg-purple-600', 'text-white', 'shadow');
+                document.getElementById(`lang-${l}`).classList.add('bg-purple-950/60', 'text-purple-300');
+            });
+            document.getElementById(`content-${lang}`).classList.remove('hidden');
+            document.getElementById(`lang-${lang}`).classList.add('bg-purple-600', 'text-white', 'shadow');
+            document.getElementById(`lang-${lang}`).classList.remove('bg-purple-950/60', 'text-purple-300');
+        }
+    </script>
+</body>
+</html>
